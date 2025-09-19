@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import growthImage from "@/assets/growthimage.jpg";
 import mkulimaapp from "@/assets/mkulimaapp.jpg";
-import codesnippetImage from "@/assets/codesnippet-manager.jpg";
-import aiContentImage from "@/assets/ai-content-generator.jpg";
+import farmproduce from "@/assets/farmproduce.jpg";
+import momversation from "@/assets/momversation.jpeg";
 import { motion } from "framer-motion";
 
 const Projects = () => {
@@ -32,21 +32,21 @@ const Projects = () => {
       featured: true,
     },
     {
-      title: "CodeSnippet Manager",
-      description: "Developer tool for organizing and sharing code snippets with syntax highlighting and team collaboration.",
-      image: codesnippetImage,
-      technologies: ["Vue.js", "Express.js", "MongoDB", "Docker"],
-      liveUrl: "https://codesnippets.example.com",
-      githubUrl: "https://github.com/alexthompson/codesnippet-manager",
+      title: "Farm Produce",
+      description: "Simple e-commerce platfrom where farmers get to list their crops for sale, buyers and sellers get to experience fresh organic products through purchases and organized delivery",
+      image: farmproduce,
+      technologies: ["Next.js", "Tailwindcss", "MongoDB"],
+      liveUrl: "https://farm-produce-phi.vercel.app/",
+      githubUrl: "https://github.com/mercie-ux/FarmProduce.git",
       featured: false,
     },
     {
-      title: "AI Content Generator",
-      description: "Smart content creation platform using GPT integration for blogs, social media, and marketing materials.",
-      image: aiContentImage,
-      technologies: ["Next.js", "OpenAI API", "Stripe", "Tailwind CSS"],
-      liveUrl: "https://ai-content.example.com",
-      githubUrl: "https://github.com/alexthompson/ai-content-generator",
+      title: "Momversation AI",
+      description: "Mom's ai platform using GPT integration for helping mom chat with ai, share thoughts, and offer mental support.",
+      image: momversation,
+      technologies: ["Typescript", "OpenAI API", "React", "Tailwind CSS"],
+      liveUrl: "https://momversations-compassionate-chat.vercel.app/",
+      githubUrl: "https://github.com/mercie-ux/momversations-compassionate-chat.git",
       featured: false,
     },
   ];
