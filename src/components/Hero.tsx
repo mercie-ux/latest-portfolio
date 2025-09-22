@@ -29,14 +29,16 @@ const Hero = () => {
           </p>
 
           <div className="flex gap-4 justify-center mb-12 flex-wrap">
-            <Button 
-              variant="gradient"
-              size="lg"
-              className="font-semibold px-8"
-            >
-              <Mail className="mr-2 h-5 w-5" />
-              Get In Touch
-            </Button>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=njerimercy77@gmail.com&su=%20&body=%20Mercy," target="_blank" rel="noopener noreferrer">
+              <Button 
+                variant="gradient"
+                size="lg"
+                className="font-semibold px-8"
+              >
+                <Mail className="mr-2 h-5 w-5" />
+                Get In Touch
+              </Button>
+            </a>
           <a href="/Mercy-cv.pdf" target="_blank" rel="noopener noreferrer">  
             <Button 
               variant="outline" 
@@ -65,7 +67,9 @@ const Hero = () => {
               <Linkedin className="h-8 w-8" />
             </a>
             <a 
-              href="mailto:njerimercy77@gmail.com" 
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=njerimercy77@gmail.com&su=%20&body=%20Mercy," 
+              target="_blank" 
+              rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors glow-hover"
               aria-label="Email Contact"
             >
