@@ -3,12 +3,12 @@ import Image from "next/image";
 import { ExternalLink, Github, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import growthImage from "@/assets/growthimage.jpg";
+import growthImage from "@/assets/growthnew.jpg";
 import mkulimaapp from "@/assets/mkulimaapp.jpg";
 import farmproduce from "@/assets/farmproduce.jpg";
 import momversation from "@/assets/momversation.jpeg";
 import { motion } from "framer-motion";
-
+import telegramBotImage from "@/assets/mercieBot.jpg"
 const Projects = () => {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
 
@@ -18,8 +18,8 @@ const Projects = () => {
       description: "A digital platform promoting mental wellness in the workplace.",
       image: growthImage,
       technologies: ["React", "VanillaCSS", "Node.js", "PostgreSQL"],
-      liveUrl: "https://growth-full-circle-agency-tn9j.vercel.app/",
-      githubUrl: "https://github.com/mercie-ux/Growth-full-circle-agency.git",
+      liveUrl: "https://wellspring-hub.vercel.app/",
+      githubUrl: "https://github.com/mercie-ux/wellspring-hub.git",
       featured: true,
     },
     {
@@ -38,6 +38,15 @@ const Projects = () => {
       technologies: ["Next.js", "Tailwindcss", "MongoDB"],
       liveUrl: "https://farm-produce-phi.vercel.app/",
       githubUrl: "https://github.com/mercie-ux/FarmProduce.git",
+      featured: false,
+    },
+    {
+      title: "Telegram AI Assistant",
+      description: "My personal AI assistant on Telegram, powered by Gemini Generative AI, designed to answer questions about me, my skills, projects, and experience through natural conversation.",
+      image: telegramBotImage,
+      technologies: ["Telegram Bot API", "Gemini Generative AI", "python(Flask)"],
+      liveUrl: "https://t.me/Merciem_bot",
+      githubUrl: "https://github.com/mercie-ux/telegrambot.git",
       featured: false,
     },
     {
