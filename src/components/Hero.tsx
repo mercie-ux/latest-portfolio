@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import TypingEffect from "./TypingEffect";
 
 const Hero = () => {
-  const skills = ["Frontend Developer", "React", "MERN Developer", "Blockchain Enthusiast"];
+  const skills = ["Frontend Developer", "React", "MERN Developer", "python","Blockchain Enthusiast"];
 
   return (
     <section className="min-h-screen flex items-center justify-center relative z-10 px-6" id="hero">
@@ -39,7 +39,7 @@ const Hero = () => {
                 Get In Touch
               </Button>
             </a>
-          <a href="/Mercy-cv.pdf" target="_blank" rel="noopener noreferrer">  
+          <a href="/mercy-cv(2025).pdf" target="_blank" rel="noopener noreferrer">  
             <Button 
               variant="outline" 
               size="lg"
