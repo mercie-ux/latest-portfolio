@@ -17,7 +17,7 @@ const Projects = () => {
       title: "GrowthFullCircle Agency",
       description: "A digital platform promoting mental wellness in the workplace.",
       image: growthImage,
-      technologies: ["React", "VanillaCSS", "Node.js", "PostgreSQL"],
+      technologies: ["Nextjs", "TailwindCSS", "python", "sqlite3"],
       liveUrl: "https://wellspring-hub.vercel.app/",
       githubUrl: "https://github.com/mercie-ux/wellspring-hub.git",
       featured: true,
