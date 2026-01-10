@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from "lucide-react";
+import { useForm } from "@formspree/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -12,28 +13,44 @@ const Contact = () => {
     subject: "",
     message: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Formspree hook
+  const [state, handleFormspreeSubmit] = useForm("mpqqarkk");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    await handleFormspreeSubmit(e);
 
-     toast.success("Message sent successfully!", {
-      description: "Thanks for reaching out. I'll get back to you soon.",
-    });
+    if (state.succeeded) {
+      toast.success("Message sent successfully!", {
+        description: "Thanks for reaching out. I'll get back to you soon.",
+      });
 
-    setFormData({ name: "", email: "", subject: "", message: "" });
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    } else if (state.errors) {
+      toast.error("Something went wrong", {
+        description: "Please try again later.",
+      });
+    }
+
     setIsSubmitting(false);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData(prev => ({
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
@@ -87,7 +104,8 @@ const Contact = () => {
             Let's <span className="gradient-text">Connect</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Ready to bring your ideas to life? I'm always open to discussing new opportunities and exciting projects.
+            Ready to bring your ideas to life? I'm always open to discussing new
+            opportunities and exciting projects.
           </p>
         </div>
 
@@ -95,11 +113,13 @@ const Contact = () => {
           {/* Contact Info */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold mb-6 gradient-text">Get In Touch</h3>
+              <h3 className="text-2xl font-bold mb-6 gradient-text">
+                Get In Touch
+              </h3>
               <p className="text-muted-foreground mb-8 leading-relaxed">
-                I'm currently available for freelance projects and full-time opportunities. 
-                Whether you have a question, want to work together, or just want to say hello, 
-                I'd love to hear from you.
+                I'm currently available for freelance projects and full-time
+                opportunities. Whether you have a question, want to work
+                together, or just want to say hello, I'd love to hear from you.
               </p>
             </div>
 
@@ -144,64 +164,62 @@ const Contact = () => {
 
           {/* Contact Form */}
           <div className="glass-effect rounded-xl p-8">
-            <h3 className="text-2xl font-bold mb-6 gradient-text">Send a Message</h3>
-            
+            <h3 className="text-2xl font-bold mb-6 gradient-text">
+              Send a Message
+            </h3>
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <Input
-                    name="name"
-                    placeholder="Your Name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="bg-background/50 border-border focus:border-primary"
-                  />
-                </div>
-                <div>
-                  <Input
-                    name="email"
-                    type="email"
-                    placeholder="Your Email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="bg-background/50 border-border focus:border-primary"
-                  />
-                </div>
-              </div>
-
-              <div>
+                <Input 
+                type="text"
+                name="website"
+                style={{ display: "none"}}
+                tabIndex={-1}
+                autoComplete="off"
+              />
                 <Input
-                  name="subject"
-                  placeholder="Subject"
-                  value={formData.subject}
+                  name="name"
+                  placeholder="Your Name"
+                  value={formData.name}
                   onChange={handleChange}
                   required
-                  className="bg-background/50 border-border focus:border-primary"
+                />
+
+                <Input
+                  name="email"
+                  type="email"
+                  placeholder="Your Email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
                 />
               </div>
 
-              <div>
-                <Textarea
-                  name="message"
-                  placeholder="Your Message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={6}
-                  className="bg-background/50 border-border focus:border-primary resize-none"
-                />
-              </div>
+              <Input
+                name="subject"
+                placeholder="Subject"
+                value={formData.subject}
+                onChange={handleChange}
+                required
+              />
+              
+              <Textarea
+                name="message"
+                placeholder="Your Message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                rows={6}
+              />
 
               <Button
                 variant="gradient"
                 type="submit"
-                disabled={isSubmitting}
                 size="lg"
                 className="w-full"
+                disabled={isSubmitting || state.submitting}
               >
-                {isSubmitting ? (
+                {isSubmitting || state.submitting ? (
                   <>
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-current mr-2" />
                     Sending...
